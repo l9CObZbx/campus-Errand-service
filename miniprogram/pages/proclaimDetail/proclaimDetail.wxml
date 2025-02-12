@@ -1,0 +1,5 @@
+<view class="container">
+    <text class="title">{{ title }}</text>
+    <view class="time">{{ expected_time }}</view>
+    <view class="content">{{ content }}</view>
+</view>

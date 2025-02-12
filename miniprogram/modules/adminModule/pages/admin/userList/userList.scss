@@ -1,0 +1,137 @@
+/* 全局样式 */
+.container {
+  padding: 10rpx;
+  background-color: #f5f5f5;
+}
+
+.header {
+  height: 140rpx;
+  padding: 10rpx;
+  border-radius: 10rpx;
+  background-color: #ffffff;
+  margin-bottom: 18rpx;
+}
+
+.header .top {
+  height: 60rpx;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 25rpx;
+}
+
+.header .top .search-bar {
+  background-color: #f5f5f5;
+  border-radius: 5%;
+  padding: 10rpx;
+  width: 70%;
+}
+
+.header .top .searchBtn {
+  width: 150rpx;
+  line-height: 60rpx;
+  text-align: center;
+  color: white;
+  background-color: #409eff;
+  border-radius: 5%;
+}
+
+.header .bottom {
+  display: flex;
+}
+
+.header .bottom .screenBtn {
+  padding: 5rpx 20rpx;
+}
+
+.header .bottom .screenBtn.active {
+  color: #409eff;
+  border-bottom: 2px solid #409eff;
+}
+
+.user-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.user-card {
+  padding: 12px;
+  background-color: #fff;
+  border-radius: 6px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.user-header {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 8px;
+}
+
+.user-name {
+  font-weight: bold;
+  font-size: 16px;
+}
+
+.user-status {
+  color: #4caf50; /* 正常状态颜色 */
+}
+
+.user-details {
+  display: flex;
+  justify-content: space-between;
+  position: relative;
+}
+
+.user-details text {
+  display: block;
+  color: #666;
+  margin-bottom: 4px;
+}
+
+.user-details .right image {
+  width: 100rpx;
+  height: 100rpx;
+  border-radius: 50%;
+  position: absolute;
+  left: 460rpx;
+  top: -60rpx;
+}
+
+.details-link {
+  color: #007aff;
+  text-decoration: underline;
+}
+
+// 操作
+.actions {
+  margin-top: 8px;
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.action-btn {
+  height: 60rpx;
+  width: 160rpx;
+  line-height: 60rpx;
+  text-align: center;
+  border-radius: 4px;
+  color: #fff;
+  margin: 0 20rpx;
+}
+
+.norm-btn {
+  background-color: rgb(76, 190, 76); /* 禁用按钮颜色 */
+}
+
+.forbid-btn {
+  background-color: rgb(187, 77, 77); /* 删除按钮颜色 */
+}
+
+.norm {
+  color: green;
+}
+
+.forbid {
+  color: red;
+}

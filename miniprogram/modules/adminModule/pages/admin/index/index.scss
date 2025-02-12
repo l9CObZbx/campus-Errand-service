@@ -1,0 +1,153 @@
+/* 页面容器 */
+.page-container {
+  display: flex;
+  flex-direction: column;
+  padding: 10rpx;
+  background-color: #f5f5f5;
+}
+
+/* 用户信息栏 */
+.user-info {
+  display: flex;
+  align-items: center;
+  height: 150rpx;
+  background-color: #ffffff;
+  border-radius: 10rpx;
+  margin-bottom: 18rpx;
+}
+
+.avatar {
+  width: 120rpx;
+  height: 120rpx;
+  border-radius: 50%;
+  margin: 20rpx;
+}
+
+.info {
+  display: flex;
+  flex-direction: column;
+  padding-left: 20rpx;
+}
+
+.info .name {
+  font-size: 32rpx;
+  font-weight: bold;
+  margin-bottom: 10rpx;
+}
+
+.info .login-details {
+  font-size: 24rpx;
+}
+
+.login-details {
+  font-size: 24rpx;
+  color: #888;
+}
+
+/* 统计数据 */
+.statistics {
+  display: flex;
+  justify-content: space-around;
+  background-color: #ffffff;
+  height: 90rpx;
+  margin-bottom: 18rpx;
+}
+
+.stat-item {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  padding: 10rpx 0;
+}
+
+.stat-item .label {
+  font-size: 26rpx;
+  margin-bottom: 5rpx;
+}
+
+.stat-item .number {
+  font-size: 26rpx;
+}
+
+/* 功能管理模块 */
+.function-title {
+  text-align: center;
+  font-size: 30rpx;
+  font-weight: 600;
+  background-color: #ffffff;
+  padding: 10rpx 0;
+}
+
+.function-management {
+  display: flex;
+  flex-wrap: wrap;
+  background-color: #ffffff;
+  border-radius: 10rpx;
+  height: 150rpx;
+  margin-bottom: 18rpx;
+}
+
+.func-item {
+  display: flex;
+  flex-direction: column;
+  width: 25%;
+  height: 150rpx;
+  text-align: center;
+  margin-bottom: 20rpx;
+}
+
+.func-item .icon {
+  width: 80rpx;
+  height: 80rpx;
+  margin: 0 auto;
+}
+
+.func-item .func-name {
+  height: 50rpx;
+  margin-top: 10rpx;
+  font-size: 26rpx;
+  font-weight: 500;
+}
+
+/* 设置项列表 */
+.settings {
+  background-color: #ffffff;
+  border-radius: 10rpx;
+}
+
+.setting-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 90rpx;
+  border-bottom: 1rpx solid #eee;
+}
+
+.setting-item:last-child {
+  border-bottom: none;
+}
+
+.setting-name {
+  font-size: 28rpx;
+  padding-left: 20rpx;
+}
+
+.arrow {
+  font-size: 28rpx;
+  font-weight: 600;
+  color: #ccc;
+  padding-right: 20rpx;
+}
+
+/* 退出按钮 */
+.logout-btn {
+  margin: 20rpx 0;
+  width: 100%;
+  height: 80rpx;
+  background-color: #409eff;
+  color: #fff;
+  border-radius: 10rpx;
+  font-size: 32rpx;
+  text-align: center;
+  line-height: 80rpx;
+}

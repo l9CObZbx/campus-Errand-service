@@ -1,0 +1,67 @@
+<view class="container">
+    <view class="banner">
+        <image
+            src="../../assets/home.jpg"
+            mode=""
+        />
+    </view>
+
+    <view class="header">
+        <text class="notice">当前有{{ unreceiveCount }}个需求待接单...</text>
+    </view>
+
+    <!-- 图标和文字功能块 -->
+    <view class="function-container">
+
+        <view
+            class="function-box"
+            bind:tap="toOrderList"
+        >
+
+            <view class="left">
+                <text class="function-text">订单大厅</text>
+                <text class="function-desc">查看订单，自由接单。</text>
+            </view>
+            <view class="right">
+                <image
+                    src="../../assets/menu/thing.png"
+                    class="function-icon"
+                ></image>
+            </view>
+
+        </view>
+
+        <view
+            bind:tap="toOrderPost"
+            class="function-box"
+        >
+            <view class="left">
+                <text class="function-text">订单发布</text>
+                <text class="function-desc">发布需求，快速匹配。</text>
+            </view>
+            <view class="right">
+                <image
+                    src="../../assets/menu/food.png"
+                    class="function-icon"
+                ></image>
+            </view>
+        </view>
+
+        <view
+            bind:tap="toDeliverList"
+            class="function-box"
+        >
+            <view class="left">
+                <text class="function-text">订单派送</text>
+                <text class="function-desc">接单完成任务，轻松赚取收益！</text>
+            </view>
+            <view class="right">
+                <image
+                    src="../../assets/menu/mail.png"
+                    class="function-icon"
+                ></image>
+            </view>
+        </view>
+    </view>
+
+</view>

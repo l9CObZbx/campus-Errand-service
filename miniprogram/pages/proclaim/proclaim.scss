@@ -1,0 +1,72 @@
+.container {
+  padding: 0;
+}
+
+.header {
+  height: 66rpx;
+  padding: 10rpx;
+  border-radius: 10rpx;
+  box-shadow: 10rpx 10rpx 10rpx #f5f5f5;
+  background-color: #ffffff;
+  margin-bottom: 18rpx;
+}
+
+.header .top {
+  height: 60rpx;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 25rpx;
+}
+
+.header .top .search-bar {
+  background-color: #f5f5f5;
+  border-radius: 5%;
+  padding: 10rpx;
+  width: 70%;
+}
+
+.header .top .searchBtn {
+  width: 150rpx;
+  line-height: 60rpx;
+  text-align: center;
+  color: white;
+  background-color: #409eff;
+  border-radius: 5%;
+}
+
+.list .item {
+  width: 700rpx;
+  margin: 15rpx auto;
+  background-color: #ffffff;
+  border-radius: 10rpx;
+  padding: 20rpx 30rpx;
+  box-sizing: border-box;
+  margin-bottom: 20rpx;
+  position: relative;
+}
+
+.list .item .head {
+  font-size: 34rpx;
+  font-weight: 600;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.list .item .body {
+  overflow: hidden; /* 超出隐藏 */
+  text-overflow: ellipsis; /* 超出显示省略号 */
+  display: -webkit-box; /* 必须使用 flex 布局 */
+  -webkit-line-clamp: 2; /* 限制显示 2 行 */
+  -webkit-box-orient: vertical; /* 垂直布局 */
+
+  margin: 8rpx 0;
+  color: gray;
+  font-size: 30rpx;
+}
+.list .item .foot {
+  display: flex;
+  flex-direction: row-reverse;
+  color: gray;
+  font-size: 28rpx;
+}

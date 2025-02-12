@@ -1,0 +1,105 @@
+<view class="page-container">
+    <!-- 用户信息栏 -->
+    <view class="user-info">
+        <image
+            src="{{ avatarFileID }}"
+            class="avatar"
+        >
+        </image>
+        <view class="info">
+            <text class="name">{{ nickname }}</text>
+            <text class="login-details">共登录{{ count }}次，上次{{ time }}</text>
+        </view>
+    </view>
+
+    <!-- 统计数据区域 -->
+    <view class="statistics">
+        <view class="stat-item">
+            <text class="label">用户数</text>
+            <text class="number">{{ userCount }}</text>
+        </view>
+        <view class="stat-item">
+            <text class="label">认证数</text>
+            <text class="number">{{ confirmCount }}</text>
+        </view>
+        <view class="stat-item">
+            <text class="label">公告数</text>
+            <text class="number">1</text>
+        </view>
+        <view class="stat-item">
+            <text class="label">订单数</text>
+            <text class="number">{{orderCount}}</text>
+        </view>
+    </view>
+
+    <!-- 功能管理模块 -->
+    <view>
+        <view class="function-title">功能管理</view>
+        <view class="function-management">
+            <view
+                class="func-item"
+                bindtap="toUserManage"
+            >
+                <image
+                    class="icon"
+                    src="cloud://ilyaa-9gnyr33g2884e8ee.696c-ilyaa-9gnyr33g2884e8ee-1329892735/resource/admin/yonghu.png"
+                ></image>
+                <text class="func-name">用户管理</text>
+            </view>
+
+            <view
+                class="func-item"
+                bindtap="toConfirmManage"
+            >
+
+                <image
+                    class="icon"
+                    src="cloud://ilyaa-9gnyr33g2884e8ee.696c-ilyaa-9gnyr33g2884e8ee-1329892735/resource/admin/renzheng.png"
+                ></image>
+                <text class="func-name">认证管理</text>
+            </view>
+            <view
+                class="func-item"
+                bindtap="toInformManage"
+            >
+
+                <image
+                    class="icon"
+                    src="cloud://ilyaa-9gnyr33g2884e8ee.696c-ilyaa-9gnyr33g2884e8ee-1329892735/resource/admin/wenzhang.png"
+                ></image>
+                <text class="func-name">公告管理</text>
+            </view>
+            <view
+                class="func-item"
+                bindtap="toOrderManage"
+            >
+
+                <image
+                    class="icon"
+                    src="cloud://ilyaa-9gnyr33g2884e8ee.696c-ilyaa-9gnyr33g2884e8ee-1329892735/resource/admin/dingdan.png"
+                ></image>
+                <text class="func-name">订单管理</text>
+            </view>
+        </view>
+
+    </view>
+
+    <!-- 设置项列表 -->
+    <view class="settings">
+        <view class="setting-item">
+            <text class="setting-name">小程序二维码</text>
+            <text class="arrow">></text>
+        </view>
+        <!-- <view class="setting-item">
+            <text class="setting-name">修改我的管理员密码</text>
+            <text class="arrow">></text>
+        </view> -->
+    </view>
+
+    <!-- 退出按钮 -->
+    <button
+        class="logout-btn"
+        bind:tap="logout"
+    >
+        退出登录</button>
+</view>

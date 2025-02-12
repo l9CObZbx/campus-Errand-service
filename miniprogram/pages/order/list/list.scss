@@ -1,0 +1,160 @@
+.container {
+  padding: 0;
+}
+
+.header {
+  height: 140rpx;
+  padding: 10rpx;
+  border-radius: 10rpx;
+  box-shadow: 10rpx 10rpx 10rpx #f5f5f5;
+  background-color: #ffffff;
+  margin-bottom: 18rpx;
+}
+
+.header .top {
+  height: 60rpx;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 25rpx;
+}
+
+.header .top .search-bar {
+  background-color: #f5f5f5;
+  border-radius: 5%;
+  padding: 10rpx;
+  width: 70%;
+}
+
+.header .top .searchBtn {
+  width: 150rpx;
+  line-height: 60rpx;
+  text-align: center;
+  color: black;
+  background-color: #fed23e;
+  border-radius: 5%;
+}
+
+.header .tabbar {
+  display: flex;
+  justify-content: space-around;
+}
+
+.header .tabbar .active {
+  padding-bottom: 8rpx;
+  color: #fed23e;
+  border-bottom: 2px solid #fed23e;
+}
+
+.list .item {
+  width: 700rpx;
+  margin: 0 auto;
+  background-color: #ffffff;
+  border-radius: 10rpx;
+  padding: 20rpx;
+  box-sizing: border-box;
+  margin-bottom: 20rpx;
+  position: relative;
+}
+
+.list .item .status {
+  position: absolute;
+  font-size: 26rpx;
+  top: -16rpx;
+  left: 16rpx;
+  font-weight: 600;
+  background-color: #fff;
+  border-radius: 10rpx;
+  padding: 0 10rpx;
+}
+
+.list .item .zero {
+  color: #363b40;
+}
+
+.list .item .one {
+  color: green;
+}
+.list .item .two {
+  color: #2e3033;
+}
+
+.list .item .three {
+  color: red;
+}
+
+.list .item .head {
+  display: flex;
+  justify-content: space-between;
+  height: 40rpx;
+  line-height: 40rpx;
+}
+
+.list .item .head .price {
+  font-weight: 600;
+  color: red;
+}
+
+.list .item .head .expected_time {
+  font-size: 28rpx;
+  color: rgb(75, 73, 73);
+}
+
+.list .item .head .type {
+  padding: 0 10rpx;
+  border-radius: 5rpx;
+}
+
+.list .item .head .express {
+  background-color: #add8e6;
+  color: #00008b;
+}
+
+.list .item .head .urgent {
+  background-color: #e6d96a;
+  color: #333333;
+}
+
+.list .item .body {
+  display: flex;
+  justify-content: space-between;
+  padding: 20rpx 0;
+}
+
+.list .item .body .pickup_location {
+  font-size: 30rpx;
+}
+
+.list .item .body .requires_off_campus {
+  padding: 0 10rpx;
+  border-radius: 5rpx;
+}
+
+.list .item .body .no {
+  background-color: #90ee90;
+  color: #006400;
+}
+
+.list .item .body .yes {
+  background-color: #ffa07a;
+  color: #333333;
+}
+
+.list .item .foot {
+  display: flex;
+  justify-content: space-between;
+  height: 48rpx;
+  line-height: 48rpx;
+}
+
+.list .item .description {
+  font-size: 30rpx;
+}
+
+.list .item .takeOrder {
+  padding: 0 30rpx;
+  border-radius: 5rpx;
+  background-color: #069a4d;
+  font-weight: 600;
+  color: #e8e6e3;
+}

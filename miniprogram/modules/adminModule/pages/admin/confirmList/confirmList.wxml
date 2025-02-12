@@ -1,0 +1,102 @@
+<view class="container">
+    <view class="header">
+        <view class="top">
+            <input
+                class="search-bar"
+                placeholder="输入认证姓名..."
+            />
+            <view class="searchBtn">搜索</view>
+        </view>
+
+        <view class="bottom">
+            <view
+                wx:for="{{ tabBar }}"
+                class="{{ index === activeIndex ? 'active screenBtn': 'screenBtn' }}"
+                data-index="{{ index }}"
+                bindtap="tabBarChange"
+            >
+                {{ item }}
+            </view>
+        </view>
+    </view>
+
+    <view
+        wx:if="{{ users.length !== 0 }}"
+        class="user-list"
+    >
+        <!-- 循环用户数据 -->
+        <block
+            wx:for="{{users}}"
+            wx:key="id"
+        >
+            <view class="user-card">
+                <view class="user-header">
+                    <text class="user-name">昵称：{{ item.nickname }}</text>
+                    <text
+                        class="user-status"
+                        class="{{ statusClass }}"
+                    >[{{ tabBar[activeIndex] }}]</text>
+                </view>
+                <view class="user-details">
+                    <view class="left">
+                        <text>姓名：{{item.certifications.name}}</text>
+                        <text>学号：{{item.certifications.studentID}}</text>
+                        <text>电话：{{item.certifications.phone}}</text>
+                    </view>
+                    <view class="right">
+                        <image
+                            src="{{item.certifications.fileID}}"
+                            mode="aspectFill"
+                            data-fileID="{{item.certifications.fileID}}"
+                            bindtap="previewImage"
+                        />
+                    </view>
+                </view>
+                <view
+                    class="actions"
+                    wx:if="{{ activeIndex !== 2 }}"
+                >
+                    <button
+                        class="action-btn ban-btn"
+                        bindtap="resolve"
+                        data-openid="{{ item.openid }}"
+                        wx:if="{{ activeIndex !== 1 }}"
+                    >通过</button>
+                    <button
+                        class="action-btn delete-btn"
+                        bindtap="reject"
+                        data-openid="{{ item.openid }}"
+                    >拒绝</button>
+                </view>
+            </view>
+        </block>
+    </view>
+
+    <van-empty
+        wx:else
+        description="没有数据存在~"
+    />
+</view>
+
+
+<van-dialog
+    use-slot
+    model:show="{{ show }}"
+    title="请输入拒绝原因"
+    confirm-text="确定"
+    bind:confirm="onConfirm"
+    transition="fade"
+    closeOnClickOverlay
+>
+
+    <van-field
+        label="拒绝原因"
+        input-class="input"
+        style="width: 100%;"
+        placeholder="拒绝原因..."
+        custom-class="field-root"
+        model:value="{{ rejectReason }}"
+        maxlength="20"
+    >
+    </van-field>
+</van-dialog>

@@ -1,0 +1,66 @@
+<view class="container address">
+  <form>
+    <!-- 地址信息 -->
+    <view class="address-info">
+      <!-- 收货人 -->
+      <view class="row">
+        <text class="title">联系人</text>
+        <input
+          placeholder-style="color: #969799"
+          placeholder="请输入联系人姓名"
+          maxlength="5"
+          bindchange="getName"
+          value="{{ contactName }}"
+        />
+      </view>
+
+      <!-- 手机号码 -->
+      <view class="row">
+        <text class="title">联系电话</text>
+        <input
+          placeholder-style="color: #969799"
+          placeholder="请输入联系人电话"
+          maxlength="11"
+          bindchange="getPhone"
+          value="{{ contactPhone }}"
+        />
+      </view>
+
+      <!-- 详细地址 -->
+      <view class="row">
+        <text class="title">详细地址</text>
+        <textarea
+          class="textarea"
+          maxlength="30"
+          bindblur="getAddress"
+          placeholder-style="color: #969799"
+          placeholder="如：(东校区13栋543)"
+          value="{{ address }}"
+        />
+      </view>
+
+      <!-- 设置默认地址 -->
+      <view class="row">
+        <text class="title">设置默认地址</text>
+        <switch
+          color="#f3514f"
+          class="checkbox"
+          checked="{{ isDefault }}"
+          bindchange="handleSwitchChange"
+        />
+      </view>
+    </view>
+
+    <view class="prompt">
+      <view>联系人限制 2-5 个汉字</view>
+      <view>联系电话为11位手机号码</view>
+      <view>详细地址限制为 30 个字以内，不包括特殊字符</view>
+    </view>
+
+    <!-- 提交按钮 -->
+    <button
+      class="button"
+      bindtap="saveAddrssForm"
+    >保存</button>
+  </form>
+</view>

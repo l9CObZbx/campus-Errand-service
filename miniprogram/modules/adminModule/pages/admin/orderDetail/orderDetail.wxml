@@ -1,0 +1,185 @@
+<!--pages/order/index.wxml-->
+<view class="container order">
+    <view class="address-card">
+
+        <!-- 下单者信息展示 -->
+        <view class="order-address detail-flex">
+            <view class="address-content">
+                <view class="info detail-flex">
+                    <text class="contactName">姓名：{{user_pay_info.contactName }}</text>
+                    <text class="contactPhone">电话：{{ user_pay_info.contactPhone }}</text>
+                </view>
+                <view class="title">地址：{{ user_pay_info.address }}</view>
+            </view>
+        </view>
+        <view class="top-line"></view>
+    </view>
+
+    <view class="order-info">
+        <van-cell-group custom-class="group">
+            <!-- 期望送达日期 -->
+            <van-cell
+                label-class="filed-label"
+                title="期望送达日期："
+                value="{{ expected_time }}"
+                data-type="time"
+                bind:click="onShowPopUp"
+            />
+
+            <!-- 类型选择 -->
+            <van-cell
+                label-class="filed-label"
+                title="类型选择："
+                value="{{ typeText }}"
+                data-type="type"
+                bind:click="onShowPopUp"
+            >
+            </van-cell>
+
+            <!-- 费用 -->
+            <van-cell
+                label-class="filed-label"
+                title="费用："
+            >
+                <view class="price">
+                    <input
+                        type="number"
+                        class="price_input"
+                        maxlength="3"
+                        cursor-color="default"
+                        model:value="{{ price }}"
+                        bind:input="fakeCallBack"
+                    />
+                    <text class="price_text">￥</text>
+                </view>
+            </van-cell>
+
+            <!-- 取件地址 -->
+            <van-cell
+                title="取件地址："
+                border="{{ false }}"
+                use-label-slot
+            >
+                <textarea
+                    slot="label"
+                    class="form-textarea form-textarea-normal-height"
+                    placeholder="请输入订单取件地址"
+                    name="textarea"
+                    maxlength="20"
+                    model:value="{{ pickup_location }}"
+                    bind:input="fakeCallBack"
+                />
+            </van-cell>
+
+            <!-- 订单简述 -->
+            <van-cell
+                title="订单简述："
+                border="{{ false }}"
+                use-label-slot
+            >
+                <textarea
+                    slot="label"
+                    class="form-textarea form-textarea-normal-height"
+                    placeholder="请输入订单简述，用于发布订单时的介绍"
+                    name="textarea"
+                    maxlength="20"
+                    model:value="{{ order_brief }}"
+                    bind:input="fakeCallBack"
+                />
+            </van-cell>
+
+            <!-- 备注 -->
+            <van-cell
+                title="订单备注："
+                border="{{ false }}"
+                use-label-slot
+            >
+                <textarea
+                    slot="label"
+                    class="form-textarea"
+                    placeholder="无订单备注"
+                    name="textarea"
+                    maxlength="46"
+                    model:value="{{ oreder_noted }}"
+                    bind:input="fakeCallBack"
+                />
+            </van-cell>
+
+        </van-cell-group>
+
+    </view>
+
+    <view class="upload">
+        <view class="title">文件：</view>
+
+        <view class="imageList">
+            <image
+                class="image"
+                wx:for="{{ fileList }}"
+                wx:key="*this"
+                src="{{item}}"
+                mode="aspectFill"
+                data-index="{{ index }}"
+                bind:tap="previewImage"
+            />
+        </view>
+    </view>
+
+    <!-- 动态遮罩层 -->
+    <view
+        wx:if="{{ showMask }}"
+        class="mask"
+        catchtap="preventTap"
+    >
+        <!-- <view class="active-area">这里是保留的交互区域</view> -->
+    </view>
+
+
+    <!-- 取消订单，修改订单 -->
+    <view class="footer detail-flex">
+        <view
+            class="cancleOrder"
+            data-type="status"
+            bind:tap="statusEdit"
+        >状态编辑</view>
+        <viwe
+            class="right"
+            data-type="priority"
+            bind:tap="priorityEdit"
+        >优先级编辑</viwe>
+    </view>
+
+    <!-- 弹出层 -->
+    <van-popup
+        show="{{ show }}"
+        round
+        position="bottom"
+        custom-style="height: 50%"
+        bind:close="onCancel"
+        custom-class="custom_popup"
+    >
+        <!-- 类型 -->
+        <van-picker
+            wx:if="{{ type === 'status' }}"
+            show-toolbar
+            title="状态编辑"
+            default-index="{{ order_status }}"
+            active-class="picker_active"
+            columns="{{ statusColumns }}"
+            bind:confirm="submitStatusModify"
+            bind:cancel="onCancel"
+            custom-class="custom_picker"
+        />
+        <van-picker
+            wx:else
+            show-toolbar
+            title="优先级编辑"
+            active-class="picker_active"
+            default-index="{{ priority }}"
+            columns="{{ priorityColumns }}"
+            bind:confirm="submitPriorityModify"
+            bind:cancel="onCancel"
+            custom-class="custom_picker"
+        />
+    </van-popup>
+</view>

@@ -1,0 +1,114 @@
+<!--pages/order/index.wxml-->
+<view class="container order">
+    <view class="order-info">
+        <van-cell-group custom-class="group">
+
+            <!-- 公告标题 -->
+            <van-cell
+                title="公告标题："
+                border="{{ false }}"
+                use-label-slot
+            >
+                <textarea
+                    slot="label"
+                    class="form-textarea form-textarea-normal-height"
+                    placeholder="请输入公告标题"
+                    name="textarea"
+                    value="{{ title }}"
+                    maxlength="20"
+                    bindblur="informTitle"
+                />
+            </van-cell>
+
+
+            <!-- 优先级选择 -->
+            <van-cell
+                label-class="filed-label"
+                title="公告优先级："
+                is-link
+                value="{{ priorityText }}"
+                columns="{{ columns }}"
+                data-type="type"
+                bind:click="onShowPopUp"
+            >
+            </van-cell>
+
+            <!-- 公告发布日期 -->
+            <van-cell
+                label-class="filed-label"
+                title="公告发布日期："
+                is-link
+                value="{{ expected_time_text }}"
+                data-type="time"
+                bind:click="onShowPopUp"
+            />
+
+            <!-- 公告内容 -->
+            <van-cell
+                title="公告内容："
+                border="{{ false }}"
+                use-label-slot
+            >
+                <textarea
+                    slot="label"
+                    class="form-textarea"
+                    placeholder="请输入公告内容"
+                    name="textarea"
+                    maxlength="200"
+                    value="{{ content }}"
+                    bindblur="informContent"
+                    bind:input="fakeCallBack"
+                />
+            </van-cell>
+
+        </van-cell-group>
+
+    </view>
+
+
+
+    <!-- 支付区域 -->
+    <view class="footer detail-flex">
+        <view
+            class="left"
+            wx:if="{{ !price }}"
+        ></view>
+
+        <viwe
+            class="right"
+            bind:tap="submitInform"
+        >{{ _id ? '修改公告' : '发布公告'}}</viwe>
+    </view>
+
+    <!-- 弹出层 -->
+    <van-popup
+        show="{{ show }}"
+        round
+        position="bottom"
+        custom-style="height: 50%"
+        bind:close="onCancel"
+    >
+        <!-- 时间 -->
+        <van-datetime-picker
+            wx:if="{{ popupType === 'time' }}"
+            type="datetime"
+            title="选择时间"
+            value="{{ currentDate }}"
+            filter="{{ filter }}"
+            min-date="{{ minDate }}"
+            max-date="{{ maxDate }}"
+            bind:confirm="onConfirmTimerPicker"
+            bind:cancel="onCancel"
+        />
+
+        <!-- 类型 -->
+        <van-picker
+            wx:else
+            show-toolbar
+            title="选择类型"
+            columns="{{ columns }}"
+            bind:confirm="onConfirmType"
+            bind:cancel="onCancel"
+        />
+    </van-popup>
+</view>

@@ -1,0 +1,62 @@
+<view class="container">
+  <view class="setting-list avatar-container">
+    <text>头像</text>
+
+    <view class="avatar">
+      <button
+        hover-class="none"
+        open-type="chooseAvatar"
+        bindchooseavatar="getUserAvatar"
+      >
+        <image src="{{ tempAvatarUrl || avatarFileID }}" />
+      </button>
+    </view>
+  </view>
+
+  <view
+    class="setting-list nickname"
+    bindtap="onUpdateNickName"
+  >
+    <text>昵称</text>
+    <text>{{ tempNickname || nickname }}</text>
+  </view>
+
+  <text class="prompt">2-20个字符，仅限汉字、字母或数字，不能包含空格</text>
+
+  <view class="footer">
+    <view
+      class="btn"
+      bindtap="submit"
+    >保存</view>
+  </view>
+
+  <van-dialog
+    custom-style="position: relative"
+    use-slot
+    title="修改昵称"
+    show="{{ isShowPopup }}"
+    showConfirmButton="{{ false }}"
+    showCancelButton="{{ false }}"
+    transition="fade"
+  >
+    <form bindsubmit="getNickname">
+      <input
+        class="input-name"
+        type="nickname"
+        name="nickname"
+        value="{{ tempNickname || nickname }}"
+      />
+      <view class="dialog-content">
+        <button
+          class="cancel"
+          bindtap="cancelForm"
+        >取消</button>
+        <button
+          class="confirm"
+          type="primary"
+          form-type="submit"
+        >确定</button>
+      </view>
+    </form>
+  </van-dialog>
+</view>

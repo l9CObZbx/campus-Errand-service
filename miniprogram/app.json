@@ -1,0 +1,99 @@
+{
+    "entryPagePath": "pages/index/index",
+    "pages": [
+        "pages/index/index",
+        "pages/proclaim/proclaim",
+        "pages/proclaimDetail/proclaimDetail",
+        "pages/my/my",
+        "pages/login/login",
+        "pages/address/add/index",
+        "pages/address/list/index",
+        "pages/settings/settings",
+        "pages/profile/profile",
+        "pages/confirm/confirm",
+        "pages/order/list/list",
+        "pages/order/post/post",
+        "pages/order/detail/detail"
+    ],
+    "window": {
+        "backgroundTextStyle": "light",
+        "navigationBarBackgroundColor": "#fed23e",
+        "navigationBarTitleText": "校园跑腿",
+        "navigationBarTextStyle": "black"
+    },
+    "tabBar": {
+        "color": "#252933",
+        "selectedColor": "#855c31",
+        "backgroundColor": "#ffffff",
+        "borderStyle": "black",
+        "list": [
+            {
+                "pagePath": "pages/index/index",
+                "text": "首页",
+                "iconPath": "assets/tabbar/home.png",
+                "selectedIconPath": "assets/tabbar/home_cur.png"
+            },
+            {
+                "pagePath": "pages/proclaim/proclaim",
+                "text": "公告",
+                "iconPath": "assets/tabbar/news.png",
+                "selectedIconPath": "assets/tabbar/news_cur.png"
+            },
+            {
+                "pagePath": "pages/my/my",
+                "text": "我的",
+                "iconPath": "assets/tabbar/my.png",
+                "selectedIconPath": "assets/tabbar/my_cur.png"
+            }
+        ]
+    },
+    "usingComponents": {
+        "van-dialog": "@vant/weapp/dialog/index",
+        "van-icon": "@vant/weapp/icon/index",
+        "van-empty": "@vant/weapp/empty/index",
+        "van-swipe-cell": "@vant/weapp/swipe-cell/index",
+        "van-checkbox": "@vant/weapp/checkbox/index",
+        "van-stepper": "@vant/weapp/stepper/index",
+        "van-submit-bar": "@vant/weapp/submit-bar/index",
+        "van-action-sheet": "@vant/weapp/action-sheet/index",
+        "van-button": "@vant/weapp/button/index",
+        "van-popup": "@vant/weapp/popup/index",
+        "van-field": "@vant/weapp/field/index",
+        "van-cell-group": "@vant/weapp/cell-group/index",
+        "van-cell": "@vant/weapp/cell/index",
+        "van-datetime-picker": "@vant/weapp/datetime-picker/index",
+        "van-goods-action": "@vant/weapp/goods-action/index",
+        "van-goods-action-icon": "@vant/weapp/goods-action-icon/index",
+        "van-goods-action-button": "@vant/weapp/goods-action-button/index",
+        "van-overlay": "@vant/weapp/overlay/index",
+        "van-uploader": "@vant/weapp/uploader/index",
+        "van-picker": "@vant/weapp/picker/index"
+    },
+    "sitemapLocation": "sitemap.json",
+    "resolveAlias": {
+        "@/*": "/*"
+    },
+    "subPackages": [
+        {
+            "root": "modules/adminModule",
+            "name": "adminModule",
+            "pages": [
+                "pages/admin/index/index",
+                "pages/admin/userList/userList",
+                "pages/admin/confirmList/confirmList",
+                "pages/admin/informList/informList",
+                "pages/admin/informDetail/informDetail",
+                "pages/admin/orderList/orderList",
+                "pages/admin/orderDetail/orderDetail"
+            ]
+        }
+    ],
+    "preloadRule": {
+        "pages/settings/settings": {
+            "network": "all",
+            "packages": [
+                "adminModule"
+            ]
+        }
+    }
+}

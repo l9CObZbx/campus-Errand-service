@@ -1,0 +1,75 @@
+<view class="container">
+    <view class="setting-list">
+        <navigator
+            url="/pages/profile/profile"
+            hover-class="none"
+            class="setting-item"
+        >
+            修改个人资料
+        </navigator>
+    </view>
+
+    <view class="setting-list">
+        <view
+            hover-class="none"
+            class="setting-item"
+            bind:tap="clearLocalStorage"
+        >
+            清除缓存
+        </view>
+    </view>
+
+    <view class="setting-list concat">
+        <button
+            hover-class="none"
+            class="setting-item"
+            open-type="feedback"
+        >
+            问题反馈
+        </button>
+        <button
+            hover-class="none"
+            class="setting-item"
+            open-type="contact"
+        >
+            联系我们
+        </button>
+        <button
+            hover-class="none"
+            class="setting-item"
+            open-type="openSetting"
+        >
+            授权信息
+        </button>
+    </view>
+
+    <!-- 管理页面入口 -->
+    <view>
+        <view
+            bind:tap="onClickShow"
+            class="miracleBtn"
+        >© 2025 iLYaa</view>
+    </view>
+</view>
+
+<van-dialog
+    use-slot
+    model:show="{{show}}"
+    title="请输入内容"
+    confirm-text="确定"
+    bind:confirm="onConfirm"
+    transition="fade"
+    closeOnClickOverlay
+>
+
+    <van-field
+        label="口令"
+        input-class="input"
+        style="width: 100%;"
+        placeholder="请输入口令"
+        custom-class="field-root"
+        model:value="{{ pwd }}"
+        maxlength="6"
+    >
+    </van-field>
+</van-dialog>

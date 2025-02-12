@@ -1,0 +1,204 @@
+<!--pages/order/index.wxml-->
+<view class="container order">
+    <view class="address-card">
+        <!-- 添加收货地址 -->
+        <view
+            wx:if="{{ addressList.length === 0 }}"
+            class="add-address"
+            bindtap="toAddress"
+        >
+            <van-icon
+                size="22px"
+                name="add"
+            />
+            <view>添加收货地址</view>
+        </view>
+
+        <view
+            wx:else
+            class="order-address detail-flex"
+        >
+            <view class="address-content">
+                <view class="info detail-flex">
+                    <text class="contactName">{{user_pay_info.contactName }}</text>
+                    <text class="contactPhone"> {{ user_pay_info.contactPhone }}</text>
+                </view>
+                <view class="title">{{ user_pay_info.address }}</view>
+
+            </view>
+
+            <view class="select-address">
+                <view
+                    class="navigator"
+                    bind:tap="toAddress"
+                >
+                    <van-icon
+                        color="#bbb"
+                        name="arrow"
+                        size="22px"
+                    />
+                </view>
+            </view>
+        </view>
+
+        <view class="top-line"></view>
+    </view>
+
+    <view class="order-info">
+        <van-cell-group custom-class="group">
+            <!-- 期望送达日期 -->
+            <van-cell
+                label-class="filed-label"
+                title="期望送达日期："
+                is-link
+                value="{{ expected_time_text }}"
+                data-type="time"
+                bind:click="onShowPopUp"
+            />
+
+            <!-- 类型选择 -->
+            <van-cell
+                label-class="filed-label"
+                title="类型选择："
+                is-link
+                value="{{ typeText }}"
+                data-type="type"
+                bind:click="onShowPopUp"
+            >
+            </van-cell>
+
+            <!-- 费用 -->
+            <van-cell
+                label-class="filed-label"
+                title="费用："
+            >
+                <view class="price">
+                    <input
+                        type="number"
+                        class="price_input"
+                        maxlength="3"
+                        cursor-color="default"
+                        model:value="{{ price }}"
+                        bind:input="fakeCallBack"
+                    />
+                    <text class="price_text">￥</text>
+                </view>
+            </van-cell>
+
+            <!-- 取件地址 -->
+            <van-cell
+                title="取件地址："
+                border="{{ false }}"
+                use-label-slot
+            >
+                <textarea
+                    slot="label"
+                    class="form-textarea form-textarea-normal-height"
+                    placeholder="请输入订单取件地址"
+                    name="textarea"
+                    maxlength="20"
+                    model:value="{{ pickup_location }}"
+                    bind:input="fakeCallBack"
+                />
+            </van-cell>
+
+            <!-- 订单简述 -->
+            <van-cell
+                title="订单简述："
+                border="{{ false }}"
+                use-label-slot
+            >
+                <textarea
+                    slot="label"
+                    class="form-textarea form-textarea-normal-height"
+                    placeholder="请输入订单简述，用于发布订单时的介绍"
+                    name="textarea"
+                    maxlength="20"
+                    model:value="{{ order_brief }}"
+                    bind:input="fakeCallBack"
+                />
+            </van-cell>
+
+            <!-- 备注 -->
+            <van-cell
+                title="订单备注(可选)："
+                border="{{ false }}"
+                use-label-slot
+            >
+                <textarea
+                    slot="label"
+                    class="form-textarea"
+                    placeholder="请输入订单备注"
+                    name="textarea"
+                    maxlength="46"
+                    model:value="{{ oreder_noted }}"
+                    bind:input="fakeCallBack"
+                />
+            </van-cell>
+
+        </van-cell-group>
+
+    </view>
+
+    <view class="upload">
+        <view class="title">上传文件(可选)：</view>
+        <van-uploader
+            file-list="{{ tempFileList }}"
+            bind:after-read="afterRead"
+            bind:delete="deleteFile"
+            accept="image"
+            max-count="6"
+            multiple
+            image-fit="aspectFill"
+        />
+    </view>
+
+    <!-- 支付区域 -->
+    <view class="footer detail-flex">
+        <view
+            class="left"
+            wx:if="{{ !price }}"
+        ></view>
+        <view
+            class="left"
+            wx:else
+        > {{ price }} ￥</view>
+
+        <viwe
+            class="right"
+            bind:tap="submitOrder"
+        >{{order_id ? '修改订单' : '提交订单'}}</viwe>
+    </view>
+
+    <!-- 弹出层 -->
+    <van-popup
+        show="{{ show }}"
+        round
+        position="bottom"
+        custom-style="height: 50%"
+        bind:close="onCancel"
+    >
+        <!-- 时间 -->
+        <van-datetime-picker
+            wx:if="{{ popupType === 'time' }}"
+            type="datetime"
+            title="选择时间"
+            value="{{ currentDate }}"
+            filter="{{ filter }}"
+            min-date="{{ minDate }}"
+            max-date="{{ maxDate }}"
+            bind:confirm="onConfirmTimerPicker"
+            bind:cancel="onCancel"
+        />
+
+        <!-- 类型 -->
+        <van-picker
+            wx:else
+            show-toolbar
+            title="选择类型"
+            columns="{{ columns }}"
+            bind:confirm="onConfirmType"
+            bind:cancel="onCancel"
+        />
+    </van-popup>
+</view>

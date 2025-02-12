@@ -1,0 +1,56 @@
+<view class="container">
+
+    <view class="header">
+        <view class="top">
+            <input
+                class="search-bar"
+                placeholder="输入公告编号..."
+            />
+            <view class="searchBtn">搜索</view>
+        </view>
+    </view>
+
+    <view class="list">
+        <van-empty
+            wx:if="{{ informList.length === 0 }}"
+            description="暂无数据"
+        />
+        <view
+            wx:if="{{ informList.length !== 0 }}"
+            wx:for="{{ informList }}"
+            wx:key="*this"
+            class="item"
+        >
+            <view class="head">
+                {{item.title}}
+            </view>
+            <view class="body">
+                {{ item.content }}
+            </view>
+            <view class="foot">
+                {{ item.expected_time}}
+            </view>
+            <view class="action">
+                <view
+                    class="modify"
+                    data-id="{{ item._id }}"
+                    bind:tap="modify"
+                >修改</view>
+                <view
+                    class="remove"
+                    data-id="{{ item._id }}"
+                    bind:tap="remove"
+                >删除</view>
+            </view>
+        </view>
+
+    </view>
+</view>
+
+<view
+    class="add"
+    bind:tap="add"
+>新增</view>
+
+
+<!-- <button bind:tap="getCode">code</button> -->

@@ -1,0 +1,29 @@
+<view class="container">
+
+    <view class="list">
+        <van-empty
+            wx:if="{{ informList.length === 0 }}"
+            description="暂无数据"
+        />
+        <view
+            wx:if="{{ informList.length !== 0 }}"
+            wx:for="{{ informList }}"
+            wx:key="item"
+            class="item"
+            data-data="{{ item }}"
+            bind:tap="checkDetail"
+        >
+            <view class="head">
+                {{item.title}}
+            </view>
+            <view class="body">
+                {{ item.content }}
+            </view>
+            <view class="foot">
+                {{ item.expected_time}}
+            </view>
+
+        </view>
+
+    </view>
+</view>

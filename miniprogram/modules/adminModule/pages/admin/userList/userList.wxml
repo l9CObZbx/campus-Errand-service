@@ -1,0 +1,65 @@
+<view class="container">
+    <view class="header">
+        <view class="top">
+            <input
+                class="search-bar"
+                placeholder="输入用户昵称..."
+            />
+            <view class="searchBtn">搜索</view>
+        </view>
+
+        <view class="bottom">
+            <view
+                wx:for="{{ tabBar }}"
+                wx:for="{{ tabBar }}"
+                class="{{ index === activeIndex ? 'active screenBtn': 'screenBtn' }}"
+                data-index="{{ index }}"
+                bindtap="tabBarChange"
+            >{{ item }}</view>
+        </view>
+    </view>
+
+    <view
+        class="user-list"
+        wx:if="{{ users.length !== 0 }}"
+    >
+        <block
+            wx:for="{{users}}"
+            wx:key="id"
+        >
+            <view class="user-card">
+                <view class="user-header">
+                    <text class="user-name">昵称：{{item.nickname}}</text>
+                    <text class="{{ statusClass }}">[{{tabBar[activeIndex]}}]</text>
+                </view>
+                <view class="user-details">
+                    <view class="left">
+                        <text>注册：{{item.createTime}}</text>
+                    </view>
+                    <view class="right">
+                        <image src="{{ item.avatarFileID }}" />
+                    </view>
+
+                </view>
+                <view class="actions">
+                    <button
+                        wx:if="{{ status === 0}}"
+                        class="action-btn forbid-btn"
+                        bindtap="forbid"
+                        data-id="{{item.openid}}"
+                    >封禁</button>
+                    <button
+                        wx:else
+                        class="action-btn norm-btn"
+                        bindtap="norm"
+                        data-id="{{item.openid}}"
+                    >解禁</button>
+                </view>
+            </view>
+        </block>
+    </view>
+    <van-empty
+        wx:else
+        description="没有数据存在~"
+    />
+</view>

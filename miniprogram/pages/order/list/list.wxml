@@ -1,0 +1,89 @@
+<view class="container">
+
+    <view class="header">
+        <view class="top">
+            <input
+                class="search-bar"
+                placeholder="输入订单编号..."
+            />
+            <view class="searchBtn">搜索</view>
+        </view>
+
+        <view class="tabbar">
+            <view
+                class="{{ selectedAll ? 'active all' : 'all' }}"
+                bind:tap="onTapAll"
+            >全部</view>
+
+            <picker
+                mode="selector"
+                range="{{ typeOptions }}"
+                bindchange="onTypeOptionChange"
+                class="{{ selectedType ? 'active type' : 'type' }}"
+            >
+                {{typeSelectedOption ||  '类型'}}
+            </picker>
+
+            <picker
+                mode="selector"
+                range="{{ requiresOffCampusOptions }}"
+                bindchange="onRequiresOffCampusOptionChange"
+                class="{{ selectedLocation ? 'active requires_off_campus' : 'requires_off_campus' }}"
+            >
+                {{requiresOffCampusSelectedOption ||  '位置'}}
+            </picker>
+
+        </view>
+    </view>
+
+    <view class="list">
+        <van-empty
+            wx:if="{{ orderList.length === 0 }}"
+            description="暂无数据"
+        />
+        <view
+            wx:if="{{ orderList.length !== 0 }}"
+            class="item"
+            wx:for="{{ orderList }}"
+            wx:key="item"
+        >
+            <view class="status {{ statusClassMap[item.order_status] }}">{{statusClassText[item.order_status]}}</view>
+            <view class="head">
+                <view class="price">￥<span>{{ item.price }}</span></view>
+                <view class="expected_time">预期时间：{{ item.expected_time }}</view>
+                <view class="type {{ item.order_type === 0 ? 'express' : 'urgent'}}">{{ typeOptions[item.order_type] }}</view>
+            </view>
+            <view class="body">
+                <view class="pickup_location">
+                    取货地址：{{ item.pickup_location }}
+                </view>
+                <view class="requires_off_campus {{ item.requires_off_campus === 0 ? 'no' : 'yes' }}">
+                    {{ requiresOffCampusOptions[item.requires_off_campus] }}
+                </view>
+            </view>
+            <view class="foot">
+                <view class="description">
+                    订单简述：{{ item.order_brief}}
+                </view>
+                <view
+                    wx:if="{{ listType === 'hall' }}"
+                    class="takeOrder"
+                    data-user_pay_id="{{ item.user_pay }}"
+                    data-order_id="{{ item._id }}"
+                    bind:tap="takeOrder"
+                >
+                    接单
+                </view>
+                <view
+                    wx:else
+                    class="takeOrder"
+                    data-order_id="{{ item._id }}"
+                    bind:tap="checkDetail"
+                >
+                    查看详情
+                </view>
+            </view>
+        </view>
+
+    </view>
+</view>

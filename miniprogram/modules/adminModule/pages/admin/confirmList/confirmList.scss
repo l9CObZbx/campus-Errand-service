@@ -1,0 +1,141 @@
+/* 全局样式 */
+.container {
+  padding: 10rpx;
+  background-color: #f5f5f5;
+}
+
+.header {
+  height: 140rpx;
+  padding: 10rpx;
+  border-radius: 10rpx;
+  background-color: #ffffff;
+  margin-bottom: 18rpx;
+}
+
+.header .top {
+  height: 60rpx;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 25rpx;
+}
+
+.header .top .search-bar {
+  background-color: #f5f5f5;
+  border-radius: 5%;
+  padding: 10rpx;
+  width: 70%;
+}
+
+.header .top .searchBtn {
+  width: 150rpx;
+  line-height: 60rpx;
+  text-align: center;
+  color: white;
+  background-color: #409eff;
+  border-radius: 5%;
+}
+
+.header .bottom {
+  display: flex;
+}
+
+.header .bottom .screenBtn {
+  padding: 5rpx 20rpx;
+  transition: all 0.1s;
+}
+
+.header .bottom .screenBtn.active {
+  color: #409eff;
+  border-bottom: 2px solid #409eff;
+}
+
+// 列表
+.user-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.user-card {
+  padding: 12px;
+  background-color: #fff;
+  border-radius: 6px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.user-header {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 8px;
+}
+
+.user-name {
+  font-weight: bold;
+  font-size: 16px;
+}
+
+.user-status {
+  color: gray;
+}
+
+.user-details {
+  display: flex;
+  justify-content: space-between;
+}
+
+.user-details text {
+  display: block;
+  color: #666;
+  margin-bottom: 4px;
+}
+
+.user-details .right image {
+  width: 150rpx;
+  height: 150rpx;
+}
+
+// 操作
+.actions {
+  margin-top: 8px;
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.action-btn {
+  height: 60rpx;
+  width: 160rpx;
+  line-height: 60rpx;
+  text-align: center;
+  border-radius: 4px;
+  color: #fff;
+  margin: 0 20rpx;
+}
+
+.ban-btn {
+  background-color: rgb(76, 190, 76); /* 禁用按钮颜色 */
+}
+
+.delete-btn {
+  background-color: rgb(187, 77, 77); /* 删除按钮颜色 */
+}
+
+input {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 20px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.field-root {
+  margin-top: 30rpx;
+}
+
+.approve {
+  color: green;
+}
+
+.reject {
+  color: red;
+}
